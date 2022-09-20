@@ -1,30 +1,26 @@
 import styled from 'styled-components';
-import theme from '../../baseStyles/theme';
-
-const {
-  buttonPrimaryBg,
-  buttonSecondaryBg,
-  buttonPrimaryText,
-  buttonSecondaryText,
-  buttonInsetShadow,
-} = theme;
 
 const FormButton = styled.button`
   display: inline-flex;
   align-items: center;
-  padding: 5px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: ${buttonPrimaryBg};
-  color: ${buttonPrimaryText};
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(4)}`};
+  border: 2px solid transparent;
+  border-radius: ${({ theme: { options } }) => options.borderRadius};
+  background-color: ${({ theme: { colors } }) => colors.blue};
+  color: ${({ theme: { colors } }) => colors.white};
+
   &:hover,
   &:focus {
-    background-color: ${buttonSecondaryBg};
-    color: ${buttonSecondaryText};
-    outline-color: ${buttonSecondaryText};
+    background-color: ${({ theme: { colors } }) => colors.lightgrey};
+    color: ${({ theme: { colors } }) => colors.blue};
+    border: 2px solid ${({ theme: { colors } }) => colors.blue};
+    outline-color: ${({ theme: { colors } }) => colors.blue};
   }
+
   &:active {
-    box-shadow: ${buttonInsetShadow};
+    background-color: ${({ theme: { colors } }) => colors.lightgrey};
+    outline-color: ${({ theme: { colors } }) => colors.blue};
+    box-shadow: ${({ theme: { options } }) => options.shadowInner};
   }
 `;
 

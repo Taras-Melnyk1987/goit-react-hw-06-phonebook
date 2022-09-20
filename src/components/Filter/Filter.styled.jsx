@@ -1,31 +1,18 @@
 import styled from 'styled-components';
-import theme from '../../baseStyles/theme';
 
-const { buttonSecondaryText, inputPaddings } = theme;
-
-const FormFilter = styled.div`
-  margin-bottom: 15px;
-`;
-
-const FormLabel = styled.label``;
-
-const InputWrapper = styled.label`
+const FilterWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  padding-top: ${({ theme: { spacing } }) => spacing(1)};
+  padding-bottom: ${({ theme: { spacing } }) => spacing(1)};
 `;
 
 const Input = styled.input`
-  margin-right: 5px;
-  padding: ${inputPaddings};
+  padding: ${({ theme: { spacing } }) => spacing(1)};
+  &:focus,
+  &:hover {
+    outline-color: ${({ theme: { colors } }) => colors.blue};
+  }
 `;
 
-const FilterResetBtn = styled.button`
-  display: inline-flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  color: ${buttonSecondaryText};
-`;
-
-export { FormFilter, FormLabel, InputWrapper, Input, FilterResetBtn };
+export { FilterWrapper, Input };

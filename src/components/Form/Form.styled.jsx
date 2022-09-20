@@ -1,58 +1,27 @@
 import styled from 'styled-components';
-import theme from '../../baseStyles/theme';
-
-const { inputColor, inputValidColor, inputInvalidColor, inputPaddings } = theme;
-
-const AppForm = styled.form``;
+import { Field } from 'formik';
 
 const FormField = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 75px;
   margin-right: 5px;
-  margin-bottom: 30px;
 `;
 
-const Input = styled.input`
-  width: 90%;
-  padding: ${inputPaddings};
-  &:valid {
-    border: 1px solid ${inputValidColor};
-    outline-color: ${inputValidColor};
-  }
-  &:invalid {
-    border: 1px solid ${inputInvalidColor};
-    outline-color: ${inputInvalidColor};
-  }
-  &:not(:hover),
-  &:not(:focus) {
-    border: 1px solid ${inputColor};
-  }
+const Input = styled(Field)`
+  width: 80%;
+  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 const Label = styled.label`
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 5px;
-  transform: translateY(-50%);
-  ${Input}:focus + &&,
-  ${Input}:hover + &&,
-  ${Input}:not(:placeholder-shown) + && {
-    transform: translateY(-35px);
-    left: 0;
-    font-size: 12px;
-  }
-  ${Input}:valid + && {
-    color: ${inputValidColor};
-  }
-  ${Input}:invalid + && {
-    color: ${inputInvalidColor};
-  }
-  ${Input}:placeholder-shown + &&,
-  ${Input}:not(:focus) + && {
-    color: ${inputColor};
-  }
-  ${Input}:placeholder-shown:focus + && {
-    color: ${inputInvalidColor};
-  }
+  transform: translateY(-50%); */
 `;
 
-export { Input, FormField, AppForm, Label };
+const ErrorMessageStyle = styled.div`
+  color: ${({ theme: { colors } }) => colors.red};
+`;
+
+export { FormField, Input, Label, ErrorMessageStyle };
